@@ -1,0 +1,14 @@
+syntax = "proto3";
+// protoc --go_out=plugins=grpc:. *.proto
+package proto; // 声明所在包
+option go_package = "./"; // 声明生成的 go 文件所属的包
+
+service SearchService {
+    rpc Search(SearchRequest) returns (SearchResponse) {}
+}
+message SearchRequest {
+    string request = 1;
+}
+message SearchResponse {
+    string response = 1;
+}
