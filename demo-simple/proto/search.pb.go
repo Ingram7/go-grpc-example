@@ -4,7 +4,7 @@
 // 	protoc        v3.12.3
 // source: search.proto
 
-// protoc --go_out=plugins=grpc:.  *.proto
+// protoc --go_out=plugins=grpc:. *.proto
 
 package __
 
