@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	grpcMiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"log"
 	"net"
 	"runtime/debug"
@@ -11,7 +12,6 @@ import (
 
 	pb "go-grpc-example/demo-simple/proto"
 
-	grpcMiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"google.golang.org/grpc"
 )
 
@@ -48,7 +48,7 @@ func main() {
 			LoggingInterceptor,
 		),
 	}
-
+	//server :=  grpc.NewServer(grpc.UnaryInterceptor(RecoveryInterceptor), grpc.UnaryInterceptor(LoggingInterceptor))
 	server := grpc.NewServer(opts...)
 	pb.RegisterSearchServiceServer(server, &SearchService{})
 	lis, err := net.Listen("tcp", ":"+PORT)
